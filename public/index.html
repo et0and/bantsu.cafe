@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gossip's Cafe</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="css/index.css?2" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    </head>
+        
+    <body>
+        <main>
+            <header>
+                <h1 id="title">Gossip's Cafe ☕️</h1>
+        
+                <p id="date"><i>...</i></p>
+    
+                <div class="clear"></div>
+            </header>
+    
+            <p>Today the brew is <i id="brew">🐁</i></p>
+    
+            <p>The cafe is updated throughout the day by regulars. Posts expire 8 hours after their creation. <a href="https://twitter.com/elliottsphone">Ask me</a> for posting privileges.</p>
+
+            <h2>cafe tunes</h2>
+    
+            <section id="office-tunes">
+            </section>
+
+            <h2>coffee break</h2>
+    
+            <section id="coffee-break">
+            </section>
+
+            <h2>news from the mouse pad</h2>
+    
+            <section id="mouse-pad">
+            </section>
+        </main>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                console.log('hi');
+                fetch('/api')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    var officeTunes = document.querySelector('#office-tunes');
+                    var coffeeBreak = document.querySelector('#coffee-break');
+                    var mousePad = document.querySelector('#mouse-pad');
+
+                    function isOdd(num) { return num % 2;}
+
+                    latestPostDate = data[0].creationDate;
+                    var readableDate = new Date(latestPostDate);
+                    var day = readableDate.getDate();
+                    var brew = (isOdd(day) ? 'light' : 'dark');
+                    var readableDateAMPM = readableDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+
+                    console.log(readableDate);
+
+                    document.querySelector('#date').innerHTML = 'Last updated: ' + readableDateAMPM;
+                    document.querySelector('#brew').innerHTML = brew;
+
+                    data.map((item) => {
+                        var p = document.createElement("p");
+                        p.innerHTML = `<a href="${item.link}">${item.title}</a>`;
+
+                        if(item.type == 'office_tunes')
+                            officeTunes.appendChild(p);
+                        else if(item.type == 'coffee_break')
+                            coffeeBreak.appendChild(p);
+                        else if(item.type == 'mouse_pad') {
+                            mousePad.appendChild(p);
+                        }
+                    });
+                })
+                .catch(error => console.error(error))
+            });
+        </script>
+
+    </body>
+</html>

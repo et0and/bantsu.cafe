@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gossip's Cafe</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="css/index.css?2" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    </head>
+        
+    <body>
+        <main>
+            <header>
+                <p><a href="/" class="back">🚪</a></p>
+    
+                <div class="clear"></div>
+            </header>
+    
+            <p>From this page you can post to the cafe. Please be kind to the customers.</p>
+    
+            <form method="POST" action="/post">
+                <select name="type" required>
+                    <option value="" disabled="" selected="" hidden="">category</option>
+                    <option value="office_tunes">
+                        office tunes
+                    </option>
+                    <option value="coffee_break">
+                        coffee break
+                    </option>
+                    <option value="mouse_pad">
+                        mouse pad
+                    </option>
+                </select><br />
+
+                <input class="field" type="text" name="title" placeholder="title" required /><br />
+
+                <input class="field" type="link" name="link" placeholder="url" required pattern="https?://.+" /><br />
+
+                <input type="submit" value="Post" />
+            </form>
+        </main>
+    </body>
+</html>
