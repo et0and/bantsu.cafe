@@ -39,9 +39,15 @@
             </section>
         </main>
 
+        <div id="closed">
+            <div id="closed-text">
+                <p>✨</p>
+                <p>sorry the cafe is closed. please come back at 8 am.</p>
+            </div>
+        </div>
+
         <script>
             document.addEventListener("DOMContentLoaded", function(){
-                console.log('hi');
                 fetch('/api')
                 .then(response => response.json())
                 .then(data => {
@@ -77,7 +83,20 @@
                     });
                 })
                 .catch(error => console.error(error))
+
+                // cafe hours
+                var hour = new Date().getHours();
+                console.log(hour);
+                if(hour > 19 || hour < 8) {
+                    console.log('cafe closed');
+                } else {
+                    console.log('cafe open');
+                    var el = document.querySelector("#closed");
+                    el.classList.add("open");
+                }
+
             });
+
         </script>
 
     </body>

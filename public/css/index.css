@@ -1,5 +1,6 @@
+* { box-sizing: border-box; }
 body {
-    padding: 15px;
+    padding: 10px;
     /* line-height: 30px; */
     font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -23,6 +24,7 @@ section {
 }
 h2 {
     border-bottom: 1px solid #1f12092c;
+    padding-bottom: 2px;
     /* font-weight: bold; */
 }
 /* main {
@@ -41,6 +43,23 @@ a { color: #1f1209; }
 form select, form input { margin-bottom: .5em; }
 .field { width: 20%; min-width: 200px; }
 input, select { font-size: 100%; }
+
+#closed {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.open { display: none !important; }
 
 @media(max-width: 535px) {
     #title, #date { float: none;}
