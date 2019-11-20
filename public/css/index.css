@@ -41,15 +41,24 @@ h2 {
 a { color: #1f1209; }
 .back { text-decoration: none; }
 form select, form input { margin-bottom: .5em; }
-.field { width: 20%; min-width: 200px; }
+.field {
+    width: 20%;
+    min-width: 200px;
+    border: 1px solid #1f1209;
+    color: #000;
+    background: #fff6ed;
+    padding: 4px 6px;
+}
 input, select { font-size: 100%; }
-#post {
+.button {
     border: 1px solid #1f1209;
     padding: 4px 6px;
     border-radius: 4px;
     text-decoration: none;
+    cursor: pointer;
+    background: #fff6ed;
 }
-#post:hover {
+.button:hover {
     background: #e9dfd6;
 }
 #closed {
