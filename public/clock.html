@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gossip's Cafe</title>
+        <meta name="description" content="the cafe is open">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="css/index.css?3" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+        <!-- twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Gossip's Cafe">
+        <meta name="twitter:description" content="Open">
+        <meta name="twitter:image" content="http://gossips.cafe/images/social.jpg"/>
+    </head>
+        
+    <body>
+        <main>
+            <header>
+                <p><a href="/" class="button">...</a></p>
+    
+                <div class="clear"></div>
+            </header>
+    
+            <p>You can clock in from this page.</p>
+    
+            <form method="POST" action="/post-status">
+
+                <input class="field" type="text" name="name" placeholder="name" required /><br />
+
+                <input class="field" type="text" name="status" placeholder="what are you working on today?" required /><br />
+
+                <input class="button" type="submit" value="done" />
+            </form>
+        </main>
+    </body>
+</html>

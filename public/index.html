@@ -30,7 +30,7 @@
 
             <br />
 
-            <p><a href="/kitchen" class="button">+</a></p>
+            <p><a href="/kitchen" class="button">submit</a></p>
 
             <h2>cafe tunes</h2>
     
@@ -46,6 +46,15 @@
     
             <section id="mouse-pad">
             </section>
+
+            <br />
+
+            <p><a href="/clock" class="button">clock in</a></p>
+
+            <h2>people</h2>
+    
+            <section id="people">
+            </section>
         </main>
 
         <div id="closed">
@@ -57,10 +66,10 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", function(){
-                fetch('/api')
+                // get links
+                fetch('/links')
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     var officeTunes = document.querySelector('#office-tunes');
                     var coffeeBreak = document.querySelector('#coffee-break');
                     var mousePad = document.querySelector('#mouse-pad');
@@ -104,8 +113,24 @@
                     el.classList.add("open");
                 }
 
-            });
+                // get statuses
+                fetch('/statuses')
+                .then(response => response.json())
+                .then(data => {
+                    var peopleEl = document.querySelector('#people');
 
+                    data.map((item) => {
+                        var p = document.createElement("p");
+                        var readableDate = new Date(item.creationDate);
+                        var readableDateAMPM = readableDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+                        p.innerHTML = `${readableDateAMPM} - ${item.name}`;
+
+                        peopleEl.appendChild(p);
+                    });
+                })
+                .catch(error => console.error(error))
+
+            });
         </script>
 
     </body>

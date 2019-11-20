@@ -8,7 +8,6 @@ const path = require('path');
 const { check, validationResult } = require('express-validator');
 
 const db = require("./db");
-const collection = "links";
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -16,8 +15,19 @@ app.use(express.static(__dirname + '/public', {
     extensions: ['html', 'htm'],
 }));
 
-app.get('/api',(req,res)=>{
-    db.getDB().collection(collection).find({}).toArray((err,documents)=>{
+app.get('/links',(req,res)=>{
+    db.getDB().collection('links').find({}).toArray((err,documents)=>{
+        if(err)
+            console.log(err)
+        else{
+            console.log(documents);
+            res.send(documents.reverse());
+        }
+    });
+});
+
+app.get('/statuses',(req,res)=>{
+    db.getDB().collection('statuses').find({}).toArray((err,documents)=>{
         if(err)
             console.log(err)
         else{
@@ -36,8 +46,20 @@ app.post('/post', [
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() })
     }
-        db.getDB().collection(collection).insertOne({type: req.body.type, title: req.body.title, link: req.body.link, creationDate: new Date()});
+        db.getDB().collection('links').insertOne({type: req.body.type, title: req.body.title, link: req.body.link, creationDate: new Date()});
         // res.send('Data received:\n' + JSON.stringify(req.body.text));
+        res.redirect('/');
+})
+
+app.post('/post-status', [
+    check('name').not().isEmpty().escape(),
+    check('status').not().isEmpty().escape()
+  ], (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() })
+    }
+        db.getDB().collection('statuses').insertOne({name: req.body.name, status: req.body.status, creationDate: new Date()});
         res.redirect('/');
 })
 
