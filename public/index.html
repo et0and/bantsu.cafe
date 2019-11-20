@@ -11,7 +11,7 @@
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Gossip's Cafe">
         <meta name="twitter:description" content="open daily 8am to 7pm">
-        <meta name="twitter:image" content="http://gossips.cafe/images/social-open.jpg"/>
+        <meta name="twitter:image" content="http://gossips.cafe/images/social-closed.jpg"/>
     </head>
         
     <body>
@@ -95,13 +95,18 @@
 
                 // cafe hours
                 var hour = new Date().getHours();
+                var twitterMeta = document.getElementsByName("twitter:image")[0]
+                var socialCardPath = 'http://gossips.cafe/images/';
+                console.log(twitterMeta);
                 console.log(hour);
                 if(hour > 19 || hour < 8) {
                     console.log('cafe closed');
+                    twitterMeta.content = socialCardPath + 'social-closed.jpg'; 
                 } else {
                     console.log('cafe open');
                     var el = document.querySelector("#closed");
                     el.classList.add("open");
+                    twitterMeta.content = socialCardPath + 'social-open.jpg'; 
                 }
 
             });
