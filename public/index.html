@@ -17,7 +17,7 @@
     <body>
         <main>
             <header>
-                <h1 id="title">Gossip's Cafe ☕️</h1>
+                <h1 id="title">Gossip's Café ☕️</h1>
         
                 <p id="date"><i>...</i></p>
     
@@ -32,7 +32,7 @@
 
             <p><a href="/kitchen" class="button">submit</a></p>
 
-            <h2>cafe tunes</h2>
+            <h2>café tunes</h2>
     
             <section id="office-tunes">
             </section>
@@ -123,7 +123,7 @@
                         var p = document.createElement("p");
                         var readableDate = new Date(item.creationDate);
                         var readableDateAMPM = readableDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-                        p.innerHTML = `${readableDateAMPM} - ${item.name}`;
+                        p.innerHTML = `[${readableDateAMPM}] ~${item.name} – ${item.status}`;
 
                         peopleEl.appendChild(p);
                     });
