@@ -1,12 +1,12 @@
 {
-  "name": "daily-office",
+  "name": "gossips-cafe",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "a cafe on the internet",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Elliott Cost",
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^16.1.7",
