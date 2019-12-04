@@ -24,8 +24,6 @@
                 <div class="clear"></div>
             </header>
     
-            <!-- <p>Today the brew is <i id="brew">🐁</i></p> -->
-    
             <p>The cafe is open daily from 8am to 7pm. Posts expire 8 hours after their creation. There is no archive 🍃</p>
 
             <br />
@@ -41,11 +39,6 @@
     
             <section id="coffee-break">
             </section>
-
-            <!-- <h2>news from the mouse pad</h2>
-    
-            <section id="mouse-pad">
-            </section> -->
 
             <br />
 
@@ -74,18 +67,12 @@
                     var coffeeBreak = document.querySelector('#coffee-break');
                     var mousePad = document.querySelector('#mouse-pad');
 
-                    // function isOdd(num) { return num % 2;}
-
                     latestPostDate = data[0].creationDate;
                     var readableDate = new Date(latestPostDate);
                     var day = readableDate.getDate();
-                    // var brew = (isOdd(day) ? 'light' : 'dark');
                     var readableDateAMPM = readableDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 
-                    // console.log(readableDate);
-
                     document.querySelector('#date').innerHTML = 'Last updated: ' + readableDateAMPM;
-                    // document.querySelector('#brew').innerHTML = brew;
 
                     data.map((item) => {
                         var p = document.createElement("p");
