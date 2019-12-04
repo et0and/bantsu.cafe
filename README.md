@@ -1,6 +1,6 @@
 # gossips.cafe ☕️
 
-Gossips is a cafe on the internet. We hang out every day.
+Gossips is a cafe on the internet.
 
 ## Hours
 8am to 7pm daily.
