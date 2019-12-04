@@ -35,7 +35,7 @@ The hope is to keep the cafe small and off the radar. Feel free to invite people
 I'd like to keep the cafe really small and intimate but I'd love to hear ideas on how to it could be better.
 
 We've already had some good suggestions:
-- ... suggested that the cafe tunes should have a play button like mac.are.na.
+- @callil suggested that the cafe tunes should have a play button like mac.are.na.
 
 ## Manager
 The cafe is currently run by Elliott (elliottcost@gmail.com)
