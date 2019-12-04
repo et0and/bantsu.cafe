@@ -24,7 +24,7 @@ There is no archive. Cafe posts are given a [TTL](https://docs.mongodb.com/manua
 - No logins. Total trust.
 - No notifications ever! Check it when you feel like it.
 - The cafe should feel more like a document than an app.
-- The cafe should have a good energy. Some venting is okay.
+- The cafe should have a good vibe. Some venting is okay.
 - For every change to the cafe ask, "What would a real cafe do?"
 
 ## Community
