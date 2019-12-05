@@ -5,9 +5,15 @@ const app = express();
 const router = express.Router();
 app.use(bodyParser.json());
 const path = require('path');
+const rateLimit = require("express-rate-limit");
 const { check, validationResult } = require('express-validator');
 
 const db = require("./db");
+
+const apiLimiter = rateLimit({
+  windowMs: 10000,
+  max: 5
+})
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -37,7 +43,7 @@ app.get('/statuses',(req,res)=>{
     });
 });
 
-app.post('/post', [
+app.post('/post', apiLimiter, [
     check('type').not().isEmpty().escape(),
     check('title').not().isEmpty().escape(),
     check('link').isURL().not().isEmpty().escape()
@@ -49,9 +55,9 @@ app.post('/post', [
         db.getDB().collection('links').insertOne({type: req.body.type, title: req.body.title, link: req.body.link, creationDate: new Date()});
         // res.send('Data received:\n' + JSON.stringify(req.body.text));
         res.redirect('/');
-})
+});
 
-app.post('/post-status', [
+app.post('/post-status', apiLimiter, [
     check('name').not().isEmpty().escape(),
     check('status').not().isEmpty().escape()
   ], (req, res) => {
@@ -61,7 +67,7 @@ app.post('/post-status', [
     }
         db.getDB().collection('statuses').insertOne({name: req.body.name, status: req.body.status, creationDate: new Date()});
         res.redirect('/');
-})
+});
 
 db.connect((err)=>{
     if(err){
