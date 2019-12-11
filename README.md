@@ -9,7 +9,7 @@ Gossips is a cafe on the internet.
 A selection of tunes posted by people that hang out in the cafe.
 
 ## Coffee break
-Interesting links that are not audio.
+Interesting links for downtime.
 
 ## Clock in
 Feel free to clock in throughout the day. Remember when Twitter was just people talking about what they were doing? The cafe should feel a bit like that.
