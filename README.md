@@ -2,6 +2,8 @@
 
 Gossips is a cafe on the internet.
 
+"they say coffee time is a portal to a zone”
+
 ## Hours
 8am to 7pm daily.
 
