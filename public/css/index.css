@@ -54,7 +54,7 @@ form select, form input { margin-bottom: .5em; }
     max-width: 400px;
     border: 1px solid #1f1209;
     color: #000;
-    background: #f2f7ee;
+    background: #fff6ed;
     padding: 4px 6px;
 }
 input, select { font-size: 100%; }
