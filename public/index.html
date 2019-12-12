@@ -117,12 +117,10 @@
 
                 function myTimer() {
                     var d = new Date();
-                    var t = d.toLocaleTimeString();
+                    var t = d.toLocaleTimeString().toLowerCase();
                     document.getElementById("time").innerHTML = t;
                 }
-                var d = new Date();
-                var t = d.toLocaleTimeString();
-                document.getElementById("time").innerHTML = t;
+                myTimer();
 
                 // cafe hours
                 var hour = new Date().getHours();
