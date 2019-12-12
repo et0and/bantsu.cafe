@@ -17,43 +17,66 @@
     <body>
         <main>
             <header>
-                <h1 id="title">Gossip's Café ☕️</h1>
+                <h1 id="title">☕️ Gossip's Café</h1>
         
-                <p id="date"><i>...</i></p>
+                <p id="time"><i>...</i></p>
     
                 <div class="clear"></div>
             </header>
     
-            <p>The cafe is open daily from 8am to 7pm. Posts expire 8 hours after their creation. There is no archive 🍃</p>
+            <p>the cafe is open daily from 8am to 7pm. please join us.
+                
+            <ul>
+                <li>♻️ posts expire 8 hours after their creation.</li>
+                <li>🍃 There is no archive.</li>
+            </ul>
 
             <br />
 
-            <p><a href="/kitchen" class="button">+</a></p>
+            <p><a href="/kitchen" class="button emoji">+</a></p>
 
-            <h2>café tunes</h2>
+            <h2>♩ tunes</h2>
     
             <section id="office-tunes">
             </section>
 
-            <h2>coffee break</h2>
+            <h2>🧹coffee break</h2>
     
             <section id="coffee-break">
             </section>
 
             <br />
 
-            <p><a href="/clock" class="button">clock in</a></p>
+            <p><a href="/clock" class="button emoji">clock in</a>
 
-            <h2>what are we doing today?</h2>
+            <p></p>
+
+            <h2>🐜 what are we doing today?</h2>
     
             <section id="people">
             </section>
+
+            <p id="timestamp">...</p>
         </main>
 
         <div id="closed">
             <div id="closed-text">
                 <p>✨</p>
-                <p>sorry, the cafe is closed. please come back at 8 am.</p>
+                <p>sorry, the cafe is closed. we are open daily 8am to 7pm. please come back.</p><br /><br />
+
+                <!-- <form method="POST" action="/post-note">
+                    <label>leave a note</label><br />
+                    <em>the staff will recieve it in the morning</em><br /><br />
+                    <select name="type" required>
+                        <option value="" disabled="" selected="" hidden=""></option>
+                        <option value="☕️">☕️</option>
+                        <option value="❇️">❇️</option>
+                        <option value="🥕">🥕</option>
+                        <option value="🥭">🥭</option>
+                    </select>
+    
+                    <input class="button" type="submit" value="post" />
+                </form> -->
             </div>
         </div>
 
@@ -72,7 +95,7 @@
                     var day = readableDate.getDate();
                     var readableDateAMPM = readableDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 
-                    document.querySelector('#date').innerHTML = 'Last updated: ' + readableDateAMPM;
+                    document.querySelector('#timestamp').innerHTML = 'Last updated: ' + readableDateAMPM;
 
                     data.map((item) => {
                         var p = document.createElement("p");
@@ -89,16 +112,32 @@
                 })
                 .catch(error => console.error(error))
 
+                // Time
+                var myVar = setInterval(myTimer, 1000);
+
+                function myTimer() {
+                    var d = new Date();
+                    var t = d.toLocaleTimeString();
+                    document.getElementById("time").innerHTML = t;
+                }
+                var d = new Date();
+                var t = d.toLocaleTimeString();
+                document.getElementById("time").innerHTML = t;
+
                 // cafe hours
                 var hour = new Date().getHours();
                 console.log(hour);
                 if(hour > 18 || hour < 8) {
                     console.log('cafe closed');
+                    console.log('cafe here');
                 } else {
                     console.log('cafe open');
                     var el = document.querySelector("#closed");
                     el.classList.add("open");
                 }
+
+                // var el = document.querySelector("#closed");
+                // el.classList.add("open");
 
                 // get statuses
                 fetch('/statuses')

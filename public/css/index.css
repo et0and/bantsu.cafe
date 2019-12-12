@@ -6,6 +6,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: none;
     -moz-osx-font-smoothing: grayscale;
+    /* background: #fff6ed; */
     background: #fff6ed;
     color: #1f1209;
     font-size: 14px !important;
@@ -19,6 +20,10 @@ h1, h2, h3, h4, a, ul, ol, li, p {
 h1, h2, h3, h4, ul, ol, p {
     margin-bottom: 1.3em;
 }
+ul {
+    list-style-position: inside;
+    list-style-type: none;
+}
 section {
     margin-bottom: 2em;
 }
@@ -31,25 +36,29 @@ h2 {
     max-width: 500px;
     margin: 0 auto;
     border: 0 1px;
-    border-left: 1px solid #1f12092c;
+    border: 1px solid #1f12092c;
     border-right: 1px solid #1f12092c;
-    padding: 0 1em;
+    padding: 1em;
 } */
 #title { float: left; }
-#date { float: right; }
+#time { float: right; }
+#timestamp {
+    text-align: center;
+}
 .clear { clear: both; }
 a { color: #1f1209; }
 .back { text-decoration: none; }
 form select, form input { margin-bottom: .5em; }
 .field {
     width: 100%;
-    min-width: 200px;
+    max-width: 400px;
     border: 1px solid #1f1209;
     color: #000;
-    background: #fff6ed;
+    background: #f2f7ee;
     padding: 4px 6px;
 }
 input, select { font-size: 100%; }
+.emoji { font-family: Arial, Helvetica, sans-serif !important; }
 .button {
     border: 1px solid #1f1209;
     padding: 4px 6px;
@@ -59,7 +68,7 @@ input, select { font-size: 100%; }
     background: #fff6ed;
 }
 .button:hover {
-    background: #e9dfd6;
+    background: #00000015;
 }
 #closed {
     width: 100%;
@@ -69,7 +78,7 @@ input, select { font-size: 100%; }
     left: 0;
     right: 0;
     bottom: 0;
-    background: #000;
+    background: rgb(11, 7, 46);
     color: #fff;
     text-align: center;
     display: flex;
@@ -79,5 +88,5 @@ input, select { font-size: 100%; }
 .open { display: none !important; }
 
 @media(max-width: 535px) {
-    #title, #date { float: none;}
+    #title, #time { float: none;}
 }

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^16.1.7",
+    "are.na": "^0.1.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

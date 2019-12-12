@@ -52,7 +52,8 @@ app.post('/post', apiLimiter, [
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() })
     }
-        db.getDB().collection('links').insertOne({type: req.body.type, title: req.body.title, link: req.body.link, creationDate: new Date()});
+        db.getDB().collection('links').insertOne({type: req.body.type, title: req.body.title, link: req.body.link, creationDate: new Date()})
+
         // res.send('Data received:\n' + JSON.stringify(req.body.text));
         res.redirect('/');
 });
@@ -68,6 +69,18 @@ app.post('/post-status', apiLimiter, [
         db.getDB().collection('statuses').insertOne({name: req.body.name, status: req.body.status, creationDate: new Date()});
         res.redirect('/');
 });
+
+// app.post('/post-note', apiLimiter, [
+//     check('name').not().isEmpty().escape(),
+//     check('status').not().isEmpty().escape()
+//   ], (req, res) => {
+//     const errors = validationResult(req)
+//     if (!errors.isEmpty()) {
+//       return res.status(422).json({ errors: errors.array() })
+//     }
+//         db.getDB().collection('statuses').insertOne({name: req.body.name, status: req.body.status, creationDate: new Date()});
+//         res.redirect('/');
+// });
 
 db.connect((err)=>{
     if(err){
