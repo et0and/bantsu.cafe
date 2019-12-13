@@ -32,14 +32,14 @@ h2 {
     padding-bottom: 2px;
     /* font-weight: bold; */
 }
-main {
+/* main {
     max-width: 500px;
     margin: 0 auto;
     border: 0 1px;
     border: 1px solid #1f12092c;
     border-right: 1px solid #1f12092c;
     padding: 1em;
-}
+} */
 #title { float: left; }
 #time { float: right; }
 #timestamp {
