@@ -11,8 +11,8 @@ const { check, validationResult } = require('express-validator');
 const db = require("./db");
 
 const apiLimiter = rateLimit({
-  windowMs: 10000,
-  max: 5
+  windowMs: 5000,
+  max: 1
 })
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,10 +43,21 @@ app.get('/statuses',(req,res)=>{
     });
 });
 
+app.get('/notes',(req,res)=>{
+    db.getDB().collection('notes').find({}).toArray((err,documents)=>{
+        if(err)
+            console.log(err)
+        else{
+            console.log(documents);
+            res.send(documents.reverse());
+        }
+    });
+});
+
 app.post('/post', apiLimiter, [
-    check('type').not().isEmpty().escape(),
-    check('title').not().isEmpty().escape(),
-    check('link').isURL().not().isEmpty().escape()
+    check('type').not().isEmpty().isLength({ max: 1000 }).escape(),
+    check('title').not().isEmpty().isLength({ max: 1000 }).escape(),
+    check('link').isURL().not().isEmpty().isLength({ max: 1000 }).escape()
   ], (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -59,8 +70,8 @@ app.post('/post', apiLimiter, [
 });
 
 app.post('/post-status', apiLimiter, [
-    check('name').not().isEmpty().escape(),
-    check('status').not().isEmpty().escape()
+    check('name').not().isEmpty().isLength({ max: 100 }).escape(),
+    check('status').not().isEmpty().isLength({ max: 5000 }).escape()
   ], (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -70,17 +81,16 @@ app.post('/post-status', apiLimiter, [
         res.redirect('/');
 });
 
-// app.post('/post-note', apiLimiter, [
-//     check('name').not().isEmpty().escape(),
-//     check('status').not().isEmpty().escape()
-//   ], (req, res) => {
-//     const errors = validationResult(req)
-//     if (!errors.isEmpty()) {
-//       return res.status(422).json({ errors: errors.array() })
-//     }
-//         db.getDB().collection('statuses').insertOne({name: req.body.name, status: req.body.status, creationDate: new Date()});
-//         res.redirect('/');
-// });
+app.post('/post-note', apiLimiter, [
+    check('emoji').not().isEmpty().isLength({ max: 5 }).escape()
+  ], (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() })
+    }
+        db.getDB().collection('notes').insertOne({emoji: req.body.emoji, creationDate: new Date()});
+        res.redirect('/#success');
+});
 
 db.connect((err)=>{
     if(err){

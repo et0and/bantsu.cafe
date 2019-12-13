@@ -56,27 +56,38 @@
             <section id="people">
             </section>
 
-            <p id="timestamp">...</p>
+            <!-- <h2>🌝 notes left last night</h2>
+    
+            <section id="notes">
+            </section> -->
         </main>
 
         <div id="closed">
             <div id="closed-text">
-                <p>✨</p>
+                <p>✨☕️</p>
                 <p>sorry, the cafe is closed. we are open daily 8am to 7pm. please come back.</p><br /><br />
 
-                <!-- <form method="POST" action="/post-note">
-                    <label>leave a note</label><br />
-                    <em>the staff will receive it in the morning</em><br /><br />
-                    <select name="type" required>
+                <p id="post-note-success">thank you for your note! the cafe will see it in the morning.</p>
+
+                <form method="POST" action="/post-note" id="post-note">
+                    <label>slip a note under the door...</label>
+                    <select name="emoji" required>
                         <option value="" disabled="" selected="" hidden=""></option>
-                        <option value="☕️">☕️</option>
+                        <option value="🥕🌞🔑">🥕🌞🔑</option>
+                        <option value="🥭📫">🥭📫</option>
+                        <option value="🎃">🎃</option>
+                        <option value="🌳🦠🎹">🌳🦠🎹</option>
+                        <option value="⭐️🌳">⭐️🌳</option>
                         <option value="❇️">❇️</option>
-                        <option value="🥕">🥕</option>
-                        <option value="🥭">🥭</option>
-                    </select>
+                        <option value="🏠">🏠🧤</option>
+                        <option value="🚽">🚽</option>
+                        <option value="☕️🐁">☕️🐁</option>
+                        <option value="☮️">☮️</option>
+                        <option value="🚗🍄🚛">🚗🍄🚛</option>
+                    </select>&nbsp;
     
-                    <input class="button" type="submit" value="post" />
-                </form> -->
+                    <input class="button night-button" type="submit" value="post" />
+                </form>
             </div>
         </div>
 
@@ -89,13 +100,6 @@
                     var officeTunes = document.querySelector('#office-tunes');
                     var coffeeBreak = document.querySelector('#coffee-break');
                     var mousePad = document.querySelector('#mouse-pad');
-
-                    latestPostDate = data[0].creationDate;
-                    var readableDate = new Date(latestPostDate);
-                    var day = readableDate.getDate();
-                    var readableDateAMPM = readableDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-
-                    document.querySelector('#timestamp').innerHTML = 'Last updated: ' + readableDateAMPM;
 
                     data.map((item) => {
                         var p = document.createElement("p");
@@ -111,31 +115,6 @@
                     });
                 })
                 .catch(error => console.error(error))
-
-                // Time
-                var myVar = setInterval(myTimer, 1000);
-
-                function myTimer() {
-                    var d = new Date();
-                    var t = d.toLocaleTimeString().toLowerCase();
-                    document.getElementById("time").innerHTML = t;
-                }
-                myTimer();
-
-                // cafe hours
-                var hour = new Date().getHours();
-                console.log(hour);
-                if(hour > 18 || hour < 8) {
-                    console.log('cafe closed');
-                    console.log('cafe here');
-                } else {
-                    console.log('cafe open');
-                    var el = document.querySelector("#closed");
-                    el.classList.add("open");
-                }
-
-                // var el = document.querySelector("#closed");
-                // el.classList.add("open");
 
                 // get statuses
                 fetch('/statuses')
@@ -153,6 +132,59 @@
                     });
                 })
                 .catch(error => console.error(error))
+
+                // get notes
+                fetch('/notes')
+                .then(response => response.json())
+                .then(data => {
+                    var notesEl = document.querySelector('#notes');
+
+                    data.map((item) => {
+                        var span = document.createElement("p");
+                        span.innerHTML = `${item.emoji}`;
+
+                        notesEl.appendChild(span);
+                    });
+                })
+                .catch(error => console.error(error))
+
+                // Time
+                var myVar = setInterval(myTimer, 1000);
+
+                function myTimer() {
+                    var d = new Date();
+                    var t = d.toLocaleTimeString().toLowerCase();
+                    document.getElementById("time").innerHTML = t;
+                }
+                myTimer();
+
+                // Note Submitted?
+                if(window.location.hash == '#success'){
+                    document.getElementById("post-note").style.display = "none";
+                    document.getElementById("post-note-success").style.display = "inline";
+                } else {
+                    document.getElementById("post-note-success").style.display = "none";
+                }
+
+                // Secret 🔑
+                if(window.location.hash == '#closed'){
+                } else {
+                    openCafe();
+                }
+
+                // Cafe Hours
+                function openCafe() {
+                    var hour = new Date().getHours();
+                    console.log(hour);
+                    if(hour > 18 || hour < 8) {
+                        console.log('cafe closed');
+                        console.log('cafe here');
+                    } else {
+                        console.log('cafe open');
+                        var el = document.querySelector("#closed");
+                        el.classList.add("open");
+                    }
+                }
 
             });
         </script>

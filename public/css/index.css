@@ -57,6 +57,10 @@ form select, form input { margin-bottom: .5em; }
     background: #fff6ed;
     padding: 4px 6px;
 }
+label {
+    display: block;
+    margin-bottom: 1em;
+}
 input, select { font-size: 100%; }
 .emoji { font-family: Arial, Helvetica, sans-serif !important; }
 .button {
@@ -66,6 +70,11 @@ input, select { font-size: 100%; }
     text-decoration: none;
     cursor: pointer;
     background: #fff6ed;
+}
+.night-button {
+    background: #0b072e;
+    color: #fff6ed;
+    border: 1px solid #fff6ed;
 }
 .button:hover {
     background: #00000015;
@@ -78,14 +87,21 @@ input, select { font-size: 100%; }
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(11, 7, 46);
-    color: #fff;
+    background: #0b072e;
+    color: #fff6ed;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .open { display: none !important; }
+#post-note-success {
+    border: 1px solid #fff6ed;
+    padding: .5em;
+}
+section p {
+    margin-bottom: 8px;
+}
 
 @media(max-width: 535px) {
     #title, #time { float: none;}
