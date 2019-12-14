@@ -56,7 +56,7 @@
             <section id="people">
             </section>
 
-            <h2>🌙 notes left last night</h2>
+            <h2>🌙 items left last night</h2>
     
             <section id="notes">
             </section>
@@ -70,22 +70,42 @@
                 <p id="post-note-success">thank you for your note! the cafe will see it in the morning.</p>
 
                 <form method="POST" action="/post-note" id="post-note">
-                    <label>slip a note under the door...</label>
+                    <label>leave an item for the cafe...</label>
                     <select name="emoji" required>
                         <option value="" disabled="" selected="" hidden=""></option>
-                        <option value="🥕🌞🔑">🥕🌞🔑</option>
-                        <option value="🥭📫">🥭📫</option>
+                        <option value="🔑">🔑</option>
+                        <option value="🍄">🍄</option>
+                        <option value="🥭">🥭</option>
+                        <option value="✉️">✉️</option>
+                        <option value="💰">💰</option>
                         <option value="🎃">🎃</option>
-                        <option value="🌳🦠🎹">🌳🦠🎹</option>
-                        <option value="⭐️🌳">⭐️🌳</option>
-                        <option value="🦆🌎">🦆🌎</option>
-                        <option value="❇️">❇️</option>
-                        <option value="🏠">🏠🧤</option>
-                        <option value="🚽">🚽</option>
-                        <option value="☕️🐁">☕️🐁</option>
-                        <option value="☮️">☮️</option>
-                        <option value="🚗🍄🚛">🚗🍄🚛</option>
-                        <option value="🌝📯">🌝📯</option>
+                        <option value="🦠">🦠</option>
+                        <option value="🌳">🌳</option>
+                        <option value="🌼">🌼</option>
+                        <option value="📎">📎</option>
+                        <option value="🦷">🦷</option>
+                        <option value="🗞">🗞</option>
+                        <option value="🦆">🦆</option>
+                        <option value="🐜">🐜</option>
+                        <option value="☘️">☘️</option>
+                        <option value="🌲">🌲</option>
+                        <option value="🥚">🥚</option>
+                        <option value="🥖">🥖</option>
+                        <option value="🥔">🥔</option>
+                        <option value="🧤">🧤</option>
+                        <option value="☕️">☕️</option>
+                        <option value="🍈">🍈</option>
+                        <option value="🐁">🐁</option>
+                        <option value="🍐">🍐</option>
+                        <option value="🐈">🐈</option>
+                        <option value="🍊">🍊</option>
+                        <option value="🧩">🧩</option>
+                        <option value="🗝">🗝</option>
+                        <option value="📦">📦</option>
+                        <option value="📯">📯</option>
+                        <option value="🍋">🍋</option>
+                        <option value="🧂">🧂</option>
+                        <option value="🕯">🕯</option>
                     </select>&nbsp;
     
                     <input class="button night-button" type="submit" value="post" />
@@ -142,8 +162,8 @@
                     var notesEl = document.querySelector('#notes');
 
                     data.map((item) => {
-                        var span = document.createElement("p");
-                        span.innerHTML = `${item.emoji}`;
+                        var span = document.createElement("span");
+                        span.innerHTML = `${item.emoji} `;
 
                         notesEl.appendChild(span);
                     });
