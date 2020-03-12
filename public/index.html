@@ -5,42 +5,42 @@
         <title>Gossip's Cafe</title>
         <meta name="description" content="Just one sip and you'll be hooked.">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link href="css/index.css?4" rel="stylesheet">
-        <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+        <link href="css/index.css?5" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="images/coffee-cup.png">
         <!-- twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Gossip's Cafe">
-        <meta name="twitter:description" content="open daily 8am to 7pm">
+        <meta name="twitter:description" content="open daily 8am to 12pm">
         <meta name="twitter:image" content="http://gossips.cafe/images/social.jpg"/>
     </head>
         
     <body>
         <main>
             <header>
-                <h1 id="title">☕️ Gossip's Café</h1>
+                <h1 id="title"><span class="coffee-cup"></span> Gossip's Café</h1>
         
                 <p id="time"><i>...</i></p>
     
                 <div class="clear"></div>
             </header>
     
-            <p>the cafe is open daily from 8am to 7pm. please join us.
+            <p>the cafe is open daily from 8am to <strike>7pm</strike> 12pm. please join us.
                 
             <ul>
-                <li>🍃 posts expire 8 hours after their creation</li>
-                <li>♻️ no archive</li>
+                <li>• posts expire 8 hours after their creation</li>
+                <li>• no archive</li>
             </ul>
 
             <br />
 
             <p><a href="/kitchen" class="button emoji">+</a></p>
 
-            <h2>♩ tunes</h2>
+            <h2>tunes</h2>
     
             <section id="office-tunes">
             </section>
 
-            <h2>🧹coffee break</h2>
+            <h2>coffee break</h2>
     
             <section id="coffee-break">
             </section>
@@ -51,12 +51,12 @@
 
             <p></p>
 
-            <h2>🌞 what are we doing today?</h2>
+            <h2>what are we doing today?</h2>
     
             <section id="people">
             </section>
 
-            <h2>🌙 lost & found</h2>
+            <h2>lost & found</h2>
     
             <section id="notes">
             </section>
@@ -64,13 +64,13 @@
 
         <div id="closed">
             <div id="closed-text">
-                <p>✨☕️</p>
-                <p>sorry, the cafe is closed. we are open daily 8am to 7pm. please come back.</p><br /><br />
+                <p><span class="coffee-cup night-cup"></span></p>
+                <p>sorry, the cafe is closed. we are open daily 8am to <strike>7pm</strike> 12pm. please come back.</p><br /><br />
 
                 <p id="post-note-success">thank you for your gift! the cafe will see it in the morning.</p>
 
                 <form method="POST" action="/post-note" id="post-note">
-                    <label>leave something for the cafe...</label>
+                    <label><i>leave something for the cafe...</i></label>
                     <select name="emoji" required>
                         <option value="" disabled="" selected="" hidden=""></option>
                         <option value="🔑">🔑</option>
@@ -109,107 +109,23 @@
                     </select>&nbsp;
     
                     <input class="button night-button" type="submit" value="post" />
+
+                    <br /><br />
+
+                    <p class="credit"><i>fireflies by <a href="http://duskjacket.com/">mark beasley</a hef></i></p>
                 </form>
+            </div>
+
+            <div class="bugs">
+                <div class="firefly"></div>
+                <div class="firefly"></div>
+                <div class="firefly"></div>
+                <div class="firefly"></div>
+                <div class="firefly"></div>
             </div>
         </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function(){
-                // get links
-                fetch('/links')
-                .then(response => response.json())
-                .then(data => {
-                    var officeTunes = document.querySelector('#office-tunes');
-                    var coffeeBreak = document.querySelector('#coffee-break');
-                    var mousePad = document.querySelector('#mouse-pad');
 
-                    data.map((item) => {
-                        var p = document.createElement("p");
-                        p.innerHTML = `<a href="${item.link}">${item.title}</a>`;
-
-                        if(item.type == 'office_tunes')
-                            officeTunes.appendChild(p);
-                        else if(item.type == 'coffee_break')
-                            coffeeBreak.appendChild(p);
-                        else if(item.type == 'mouse_pad') {
-                            mousePad.appendChild(p);
-                        }
-                    });
-                })
-                .catch(error => console.error(error))
-
-                // get statuses
-                fetch('/statuses')
-                .then(response => response.json())
-                .then(data => {
-                    var peopleEl = document.querySelector('#people');
-
-                    data.map((item) => {
-                        var p = document.createElement("p");
-                        var readableDate = new Date(item.creationDate);
-                        var readableDateAMPM = readableDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-                        p.innerHTML = `[${readableDateAMPM}] ~${item.name} – ${item.status}`;
-
-                        peopleEl.appendChild(p);
-                    });
-                })
-                .catch(error => console.error(error))
-
-                // get notes
-                fetch('/notes')
-                .then(response => response.json())
-                .then(data => {
-                    var notesEl = document.querySelector('#notes');
-
-                    data.map((item) => {
-                        var span = document.createElement("span");
-                        span.innerHTML = `${item.emoji} `;
-
-                        notesEl.appendChild(span);
-                    });
-                })
-                .catch(error => console.error(error))
-
-                // Time
-                var myVar = setInterval(myTimer, 1000);
-
-                function myTimer() {
-                    var d = new Date();
-                    var t = d.toLocaleTimeString().toLowerCase();
-                    document.getElementById("time").innerHTML = t;
-                }
-                myTimer();
-
-                // Note Submitted?
-                if(window.location.hash == '#success'){
-                    document.getElementById("post-note").style.display = "none";
-                    document.getElementById("post-note-success").style.display = "inline";
-                } else {
-                    document.getElementById("post-note-success").style.display = "none";
-                }
-
-                // Secret 🔑
-                if(window.location.hash == '#closed'){
-                } else {
-                    openCafe();
-                }
-
-                // Cafe Hours
-                function openCafe() {
-                    var hour = new Date().getHours();
-                    console.log(hour);
-                    if(hour > 18 || hour < 8) {
-                        console.log('cafe closed');
-                        console.log('cafe here');
-                    } else {
-                        console.log('cafe open');
-                        var el = document.querySelector("#closed");
-                        el.classList.add("open");
-                    }
-                }
-
-            });
-        </script>
-
+        <script src="./js/script.js" type="text/javascript"></script>
     </body>
 </html>

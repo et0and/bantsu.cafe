@@ -40,6 +40,19 @@ h2 {
     border-right: 1px solid #1f12092c;
     padding: 1em;
 } */
+.coffee-cup {
+    background-image: url('../images/coffee-cup.svg');
+    background-size: 100% 100%;
+    background-position: center;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+}
+.night-cup {
+    background-image: url('../images/coffee-cup-invert.svg');
+    width: 3em;
+    height: 3em;
+}
 #title { float: left; }
 #time { float: right; }
 #timestamp {
@@ -88,12 +101,20 @@ input, select { font-size: 100%; }
     right: 0;
     bottom: 0;
     background: #0b072e;
-    color: #fff6ed;
+    color: #fff;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.credit {
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+}
+.credit, .credit a {color: #ffffff6c;}
+.credit a {text-decoration: none;}
+.credit a:hover {text-decoration: underline;}
 .open { display: none !important; }
 #post-note-success {
     border: 1px solid #fff6ed;
