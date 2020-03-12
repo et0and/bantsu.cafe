@@ -28,7 +28,7 @@ There is no archive. Cafe posts are given a [TTL](https://docs.mongodb.com/manua
 - For every change to the cafe ask, "What would a real cafe do?"
 
 ## Community
-The hope is to keep the cafe small and off the radar. Feel free to invite people to the cafe that you trust. I'd like to keep the cafe really small and intimate but I'd love to hear ideas on how to it could be a better place.
+The hope is to keep the cafe small and off the radar but feel free to invite people to the cafe that you trust and or link to it from your personal website/blog.
 
 ## Todo/Ideas
 
