@@ -112,7 +112,7 @@ input, select { font-size: 100%; }
     bottom: 0px;
     right: 15px;
 }
-.credit, .credit a {color: #ffffff6c;}
+.credit, .credit a {color: #fff;}
 .credit a {text-decoration: none;}
 .credit a:hover {text-decoration: underline;}
 .open { display: none !important; }
