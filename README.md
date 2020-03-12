@@ -28,17 +28,17 @@ There is no archive. Cafe posts are given a [TTL](https://docs.mongodb.com/manua
 - For every change to the cafe ask, "What would a real cafe do?"
 
 ## Community
-The hope is to keep the cafe small and off the radar. Feel free to invite people to the cafe that you trust. Would you take mushrooms with the person you're inviting? We've been pretty lucky with spam but if anyone has ideas on how to deal with that in the future let me know.
+The hope is to keep the cafe small and off the radar. Feel free to invite people to the cafe that you trust. I'd like to keep the cafe really small and intimate but I'd love to hear ideas on how to it could be a better place.
 
-## Ideas
-I'd like to keep the cafe really small and intimate but I'd love to hear ideas on how to it could be a better place.
+## Todo/Ideas
 
-We've already had some good suggestions:
+- Add Mark's firefly css animation when the cafe is closed.
+- A place for cafe artwork/shows (suggested by Laurel)
 - @callil suggested that the cafe tunes should have a play button like mac.are.na.
 - Should the cafe hold more than 40 people? Maybe we close if there's a spike in traffic?
 
 ## Manager
-The cafe is currently run by Elliott (elliottcost@gmail.com)
+The cafe is currently run by Elliott (elliott@phantomwifi.com)
 
 
 
