@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function(){
     function openCafe() {
         var hour = new Date().getHours();
         console.log(hour);
-        if(hour > 21 || hour < 8) {
+        if(hour > 15 || hour < 8) {
             console.log('cafe closed');
 
             var link = document.createElement("link");
