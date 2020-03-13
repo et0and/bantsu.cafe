@@ -24,13 +24,15 @@ ul {
     list-style-position: inside;
     list-style-type: none;
 }
-section {
+/* section {
     margin-bottom: 2em;
-}
-h2 {
-    border-bottom: 1px solid #1f12092c;
+} */
+summary {
+    border-bottom: 1px solid #000;
     padding-bottom: 2px;
-    /* font-weight: bold; */
+    margin-bottom: 1em;
+    padding: 6px 0;
+    position: relative;
 }
 /* main {
     max-width: 500px;
@@ -81,14 +83,18 @@ label {
     margin-bottom: 1em;
 }
 input, select { font-size: 100%; }
-.emoji { font-family: Arial, Helvetica, sans-serif !important; }
 .button {
     border: 1px solid #1f1209;
-    padding: 4px 6px;
+    padding: 1px 4px;
     border-radius: 4px;
     text-decoration: none;
     cursor: pointer;
     background: #fff6ed;
+}
+.accordian-button {
+    position: absolute;
+    right: 0;
+    top: 2px;
 }
 .night-button {
     background: #0b072e;
@@ -97,6 +103,7 @@ input, select { font-size: 100%; }
 }
 .button:hover {
     background: #00000015;
+    text-decoration: none;
 }
 #closed {
     width: 100%;
