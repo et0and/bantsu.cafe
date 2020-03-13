@@ -126,6 +126,7 @@ section p {
 .from-elliott, .from-elliott a {
     color: #00000063;
     font-size: 11px !important;
+    font-style: italic;
 }
 
 @media(max-width: 535px) {
