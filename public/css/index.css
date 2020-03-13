@@ -123,6 +123,10 @@ input, select { font-size: 100%; }
 section p {
     margin-bottom: 8px;
 }
+.from-elliott, .from-elliott a {
+    color: #00000063;
+    font-size: 11px !important;
+}
 
 @media(max-width: 535px) {
     #title, #time { float: none;}
