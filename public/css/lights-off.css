@@ -8,7 +8,7 @@ body, a {
     color: #fff6ed67;
 }
 summary {
-    border-bottom: 1px solid #fff6ed52;
+    border-bottom: 1px dashed #fff6ed52;
 }
 .coffee-cup {
     background-image: url('../images/coffee-cup-invert.svg');
