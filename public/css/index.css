@@ -142,7 +142,7 @@ section p, li {
     font-style: italic;
 }
 .emoji {
-    position: fixed;
+    position: absolute;
     z-index: -1;
 }
 #emoji:hover {

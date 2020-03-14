@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var div = document.createElement("div");
             div.classList.add('emoji');
             div.style.left = randomNumber(0, 100) + 'vw';
-            div.style.top = randomNumber(0, 100) + 'vh';
+            div.style.top = randomNumber(0, 200) + 'vh';
             div.innerHTML = `${item.emoji} `;
 
             notesEl.appendChild(div);
