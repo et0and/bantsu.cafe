@@ -20,9 +20,9 @@ h1, h2, h3, h4, a, ul, ol, li, p {
 h1, h2, h3, h4, ul, ol, p {
     margin-bottom: 1.3em;
 }
-ul {
+ul, ol {
     list-style-position: inside;
-    list-style-type: none;
+    /* list-style-type: none; */
 }
 /* section {
     margin-bottom: 2em;
@@ -133,13 +133,20 @@ input, select { font-size: 100%; }
     border: 1px solid #fff6ed;
     padding: .5em;
 }
-section p {
+section p, li {
     margin-bottom: 8px;
 }
 .from-elliott, .from-elliott a {
     color: #00000063;
     font-size: 11px !important;
     font-style: italic;
+}
+.emoji {
+    position: fixed;
+    z-index: -1;
+}
+#emoji:hover {
+    filter: blur(0px);
 }
 
 @media(max-width: 535px) {

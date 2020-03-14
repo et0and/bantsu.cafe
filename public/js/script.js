@@ -8,15 +8,15 @@ document.addEventListener("DOMContentLoaded", function(){
         var mousePad = document.querySelector('#mouse-pad');
 
         data.map((item) => {
-            var p = document.createElement("p");
-            p.innerHTML = `<a href="${item.link}">${item.title}</a>`;
+            var li = document.createElement("li");
+            li.innerHTML = `<a href="${item.link}">${item.title}</a>`;
 
             if(item.type == 'office_tunes')
-                officeTunes.appendChild(p);
+                officeTunes.appendChild(li);
             else if(item.type == 'coffee_break')
-                coffeeBreak.appendChild(p);
+                coffeeBreak.appendChild(li);
             else if(item.type == 'mouse_pad') {
-                mousePad.appendChild(p);
+                mousePad.appendChild(li);
             }
         });
     })
@@ -29,12 +29,12 @@ document.addEventListener("DOMContentLoaded", function(){
         var peopleEl = document.querySelector('#people');
 
         data.map((item) => {
-            var p = document.createElement("p");
+            var li = document.createElement("li");
             var readableDate = new Date(item.creationDate);
             var readableDateAMPM = readableDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-            p.innerHTML = `[${readableDateAMPM}] ~${item.name} – ${item.status}`;
+            li.innerHTML = `[${readableDateAMPM}] ~${item.name} – ${item.status}`;
 
-            peopleEl.appendChild(p);
+            peopleEl.appendChild(li);
         });
     })
     .catch(error => console.error(error))
@@ -43,16 +43,24 @@ document.addEventListener("DOMContentLoaded", function(){
     fetch('/notes')
     .then(response => response.json())
     .then(data => {
-        var notesEl = document.querySelector('#notes');
+        var notesEl = document.body
 
         data.map((item) => {
-            var span = document.createElement("span");
-            span.innerHTML = `${item.emoji} `;
+            var div = document.createElement("div");
+            div.classList.add('emoji');
+            div.style.left = randomNumber(0, 100) + 'vw'
+            div.style.top = randomNumber(0, 100) + 'vh'
+            div.innerHTML = `${item.emoji} `;
 
-            notesEl.appendChild(span);
+            notesEl.appendChild(div);
         });
     })
     .catch(error => console.error(error))
+
+    // Random number
+    function randomNumber(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
 
     // Time
     var myVar = setInterval(myTimer, 1000);
