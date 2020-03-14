@@ -24,11 +24,15 @@ ul, ol {
     list-style-position: inside;
     /* list-style-type: none; */
 }
+header {
+    display: grid;
+    grid-template-columns: 1fr max-content max-content;
+}
 /* section {
     margin-bottom: 2em;
 } */
 summary {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px dashed #00000026;
     padding-bottom: 2px;
     margin-bottom: 1em;
     padding: 6px 0;
@@ -142,12 +146,29 @@ section p, li {
     font-size: 11px !important;
     font-style: italic;
 }
+.from-elliott a {
+    text-decoration: underline;
+}
 .emoji {
     position: absolute;
     z-index: -1;
 }
 #emoji:hover {
     filter: blur(0px);
+}
+.light-switch {
+    background-image: url('../images/on.svg');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 1.5em;
+    width: .7em;
+    margin-right: .5em;
+    cursor: grab;
+}
+.light-switch:active {
+    cursor: grabbing;
 }
 
 @media(max-width: 535px) {

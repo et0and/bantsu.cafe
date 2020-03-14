@@ -1,0 +1,49 @@
+body {
+    background: #0b072e;
+}
+body, a {
+    color: #fff6ed;
+}
+.from-elliott, .from-elliott a {
+    color: #fff6ed67;
+}
+summary {
+    border-bottom: 1px solid #fff6ed52;
+}
+.coffee-cup {
+    background-image: url('../images/coffee-cup-invert.svg');
+}
+.button {
+    background: #0b072e;
+    border: 1px solid #fff6ed;
+}
+.button:hover {
+    color: #0b072e;
+    background: #fff6ed;
+}
+/* .emoji {
+    opacity: .8;
+} */
+.emoji:after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 3em;
+    height: 3em;
+    display: block;
+    background: #fcee7248;
+    filter: blur(15px);
+    z-index: -1;
+}
+.light-switch {
+    background-image: url('../images/off.svg');
+}
+input {
+    border: 1px solid #fff6ed !important;
+    background: #0b072e !important;
+    color: #fff6ed !important;
+}
+input::placeholder {
+    color: #fff6ed;
+}

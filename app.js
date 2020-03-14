@@ -26,7 +26,7 @@ app.get('/links',(req,res)=>{
         if(err)
             console.log(err)
         else{
-            console.log(documents);
+            // console.log(documents);
             res.send(documents.reverse());
         }
     });
@@ -37,7 +37,7 @@ app.get('/statuses',(req,res)=>{
         if(err)
             console.log(err)
         else{
-            console.log(documents);
+            // console.log(documents);
             res.send(documents.reverse());
         }
     });
@@ -48,8 +48,19 @@ app.get('/notes',(req,res)=>{
         if(err)
             console.log(err)
         else{
-            console.log(documents);
+            // console.log(documents);
             res.send(documents.reverse());
+        }
+    });
+});
+
+app.get('/light-status',(req,res)=>{
+    db.getDB().collection('lights').find({}).toArray((err,documents)=>{
+        if(err)
+            console.log(err)
+        else{
+            // console.log(documents);
+            res.send(documents);
         }
     });
 });
@@ -90,6 +101,31 @@ app.post('/post-note', apiLimiter, [
     }
         db.getDB().collection('notes').insertOne({emoji: req.body.emoji, creationDate: new Date()});
         res.redirect('/#success');
+});
+
+app.post('/light-switch', (req, res) => {
+
+    db.getDB().collection('lights').find({}).toArray((err,documents)=>{
+        if(err)
+            console.log(err)
+        else{
+            // console.log(documents);
+            console.log('this', documents[0].on);
+
+            if (documents[0].on == 'true') {
+                db.getDB().collection('lights').findOneAndUpdate({type: "incandescent"}, {$set: {on: 'false'}}, function(err, doc) {
+                    console.log(doc);
+                });
+            } else {
+                db.getDB().collection('lights').findOneAndUpdate({type: "incandescent"}, {$set: {on: 'true'}}, function(err, doc) {
+                    console.log(doc);
+                });
+            }
+            res.redirect('/');
+
+        }
+    });
+
 });
 
 db.connect((err)=>{
