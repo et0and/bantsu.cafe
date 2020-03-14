@@ -40,22 +40,36 @@ document.addEventListener("DOMContentLoaded", function(){
     .catch(error => console.error(error))
 
     // get notes
-    fetch('/notes')
-    .then(response => response.json())
-    .then(data => {
+    async function getNotes() {
+        let response = await fetch('/notes');
+        let data = await response.json()
         var notesEl = document.body
 
-        data.map((item) => {
+        console.log(await data);
+
+        var shuffledArray = await randCol(data);
+
+        shuffledArray.map((item) => {
             var div = document.createElement("div");
             div.classList.add('emoji');
-            div.style.left = randomNumber(0, 100) + 'vw'
-            div.style.top = randomNumber(0, 100) + 'vh'
+            div.style.left = randomNumber(0, 100) + 'vw';
+            div.style.top = randomNumber(0, 100) + 'vh';
             div.innerHTML = `${item.emoji} `;
 
             notesEl.appendChild(div);
         });
-    })
-    .catch(error => console.error(error))
+    }
+
+    getNotes();
+
+    function randCol(array) {
+        var colArr = [];
+        for (var i = 0; i < 5; i++) {
+            var rand = array[Math.floor(Math.random() * array.length)];
+            colArr.push(rand);
+        }
+        return colArr;
+    }
 
     // Random number
     function randomNumber(min, max) { // min and max included 
