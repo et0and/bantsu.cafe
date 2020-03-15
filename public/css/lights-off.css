@@ -21,9 +21,9 @@ summary {
     color: #0b072e;
     background: #fff6ed;
 }
-/* .emoji {
-    opacity: .8;
-} */
+.emoji {
+    display: block;
+}
 .emoji:after {
     content: '';
     position: absolute;
