@@ -162,3 +162,8 @@ document.querySelector('.light-switch').addEventListener('click', async function
         checkLights();
     })
 });
+
+window.setInterval(function(){
+    checkLights();
+    console.log('checking lights');
+}, 10000);
