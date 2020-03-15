@@ -150,7 +150,7 @@ section p, li {
 }
 .emoji {
     position: absolute;
-    z-index: -1;
+    /* z-index: -1; */
     display: none;
 }
 #emoji:hover {
