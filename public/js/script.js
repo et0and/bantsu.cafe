@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function(){
     function openCafe() {
         var hour = new Date().getHours();
         console.log(hour);
-        if(hour > 21 || hour < 8) {
+        if(hour > 22 || hour < 8) {
             console.log('cafe closed');
 
             var link = document.createElement("link");
@@ -136,7 +136,7 @@ function checkLights() {
         var link = document.querySelector('#lights-off');
         if (data[0].on == 'false') {
             link.href = "/css/lights-off.css";
-            
+
             console.log('lights off');
         } else {
             link.href = "";
