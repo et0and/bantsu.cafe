@@ -170,7 +170,17 @@ section p, li {
 .light-switch:active {
     cursor: grabbing;
 }
+.secret-door {
+    cursor: help;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+}
 
 @media(max-width: 535px) {
     #title, #time { float: none;}
 }
+

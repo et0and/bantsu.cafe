@@ -156,6 +156,11 @@ document.querySelector('.light-switch').addEventListener('click', async function
     })
 });
 
+document.querySelector('.secret-door').addEventListener('click', function() {
+    // open cafe
+    document.querySelector('#closed').style.display = "none";
+});
+
 window.setInterval(function(){
     checkLights();
     console.log('checking lights');
