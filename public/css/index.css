@@ -155,7 +155,7 @@ section p, li {
     cursor: pointer;
 }
 .emoji:hover {
-    opacity: 0.2;
+    opacity: 0.5;
 }
 .light-switch {
     background-image: url('../images/on.svg');
