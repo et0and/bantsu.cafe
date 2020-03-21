@@ -47,17 +47,33 @@ document.addEventListener("DOMContentLoaded", function(){
 
         console.log(await data);
 
-        var shuffledArray = await randCol(data);
+        // var shuffledArray = await randCol(data);
 
-        shuffledArray.map((item) => {
+        data.map((item) => {
             var div = document.createElement("div");
             div.classList.add('emoji');
             div.style.left = randomNumber(0, 100) + 'vw';
             div.style.top = randomNumber(0, 200) + 'vh';
             div.innerHTML = `${item.emoji} `;
+            div.id = item._id;
 
             notesEl.appendChild(div);
         });
+
+        const emojiElements = document.querySelectorAll('.emoji');
+
+
+            for (let emoji of emojiElements) {
+                emoji.addEventListener('click', function() {
+                    fetch('/delete-emoji?id=' + emoji.id, {
+                        method: 'delete',
+                        body: JSON.stringify()
+                    }).then(() => {
+                        location.reload(); 
+                    })
+                });
+            }
+    
     }
 
     getNotes();

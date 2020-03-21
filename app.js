@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 const path = require('path');
 const rateLimit = require("express-rate-limit");
 const { check, validationResult } = require('express-validator');
+const ObjectID = require("mongodb").ObjectID;
 
 const db = require("./db");
 
@@ -101,6 +102,13 @@ app.post('/post-note', apiLimiter, [
     }
         db.getDB().collection('notes').insertOne({emoji: req.body.emoji, creationDate: new Date()});
         res.redirect('/#success');
+});
+
+app.delete('/delete-emoji', apiLimiter, (req, res) => {
+    console.log(req.query.id);
+
+    db.getDB().collection('notes').deleteOne({_id: ObjectID(req.query.id)});
+    res.redirect('/#deleted');
 });
 
 app.post('/light-switch', (req, res) => {

@@ -152,9 +152,10 @@ section p, li {
     position: absolute;
     /* z-index: -1; */
     display: none;
+    cursor: grab;
 }
-#emoji:hover {
-    filter: blur(0px);
+.emoji:active {
+    cursor: grabbing;
 }
 .light-switch {
     background-image: url('../images/on.svg');
