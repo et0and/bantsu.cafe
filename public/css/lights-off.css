@@ -21,25 +21,44 @@ summary {
     color: #0b072e;
     background: #fff6ed;
 }
-.emoji {
-    display: block;
-}
-.emoji:after {
-    content: '';
+.note {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    width: 3em;
-    height: 3em;
-    display: block;
-    background: #fcee7248;
-    filter: blur(15px);
-    z-index: -1;
+    /* z-index: -1; */
+    width: 200px;
+    height: 200px;
+    background-color: #fff6ed;
+    opacity: .8;
+    padding: 10px;
+    color: #0b072e;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 0 0 40px #888888;
+    overflow: hidden;
+    overflow-y: scroll;
+    line-height: 20px;
+}
+.note:hover {
+    z-index: 9999;
+    background-color: #fff6ed;
+    opacity: 1;
+}
+.note a.delete-note {
+    color: #0b072e;
+    text-decoration: underline;
+    cursor: pointer;
+    font-style: italic;
+}
+.notes-toggle {
+    cursor: pointer;
+    margin-right: 10px;
+}
+.notes-toggle:hover {
+    text-decoration: underline;
 }
 .light-switch {
     background-image: url('../images/off.svg');
 }
-input {
+input, textarea {
     border: 1px solid #fff6ed !important;
     background: #0b072e !important;
     color: #fff6ed !important;

@@ -6,6 +6,7 @@
         <meta name="description" content="Just one sip and you'll be hooked.">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <link href="css/index.css?5" type="text/css" rel="stylesheet">
+        <link href="/css/lights-on.css" type="text/css" rel="stylesheet" id="lights-on">
         <link href="" type="text/css" rel="stylesheet" id="lights-off">
         <link rel="shortcut icon" type="image/png" href="images/coffee-cup.png">
         <!-- twitter -->
@@ -19,6 +20,8 @@
         <main>
             <header>
                 <h1 id="title"><span class="coffee-cup"></span> Gossip's Café</h1>
+
+                <div class="notes-toggle"></div>
 
                 <div class="light-switch"></div>
 
@@ -79,52 +82,24 @@
         <div id="closed">
             <div id="closed-text">
                 <p><span class="coffee-cup night-cup"></span></p>
-                <p>sorry, the cafe is closed. we are open daily 8am to <strike>7pm</strike> 11pm. please come back.</p><br /><br />
+                <p>sorry, the cafe is closed. we are open daily 8am to <strike>7pm</strike> 11pm. please come back soon.</p><br />
 
-                <p id="post-note-success">thank you for your gift! the cafe will see it in the morning.</p>
+                <p id="post-note-success">
+                    thank you for your note! the cafe will see it in the morning.<br /><br />
+
+                    <a href="/">post another</a>
+                </p>
 
                 <form method="POST" action="/post-note" id="post-note">
-                    <label><i>leave something for the cafe...</i></label>
-                    <input name="emoji" type="text" required />
-                    <!-- <select name="emoji" required>
-                        <option value="" disabled="" selected="" hidden=""></option>
-                        <option value="🔑">🔑</option>
-                        <option value="🍄">🍄</option>
-                        <option value="🕯">🕯</option>
-                        <option value="✉️">✉️</option>
-                        <option value="💰">💰</option>
-                        <option value="🎃">🎃</option>
-                        <option value="🦠">🦠</option>
-                        <option value="🌼">🌼</option>
-                        <option value="📎">📎</option>
-                        <option value="🦷">🦷</option>
-                        <option value="🗞">🗞</option>
-                        <option value="🦆">🦆</option>
-                        <option value="🐜">🐜</option>
-                        <option value="☘️">☘️</option>
-                        <option value="🥚">🥚</option>
-                        <option value="🥖">🥖</option>
-                        <option value="🧤">🧤</option>
-                        <option value="☕️">☕️</option>
-                        <option value="🍈">🍈</option>
-                        <option value="🐁">🐁</option>
-                        <option value="🍐">🍐</option>
-                        <option value="🐈">🐈</option>
-                        <option value="🍊">🍊</option>
-                        <option value="🧩">🧩</option>
-                        <option value="🗝">🗝</option>
-                        <option value="📦">📦</option>
-                        <option value="🍋">🍋</option>
-                        <option value="🧂">🧂</option>
-                    </select>&nbsp; -->
-    
+                    <p>leave a note for the morning</p>
+                    <textarea name="emoji" type="text" required></textarea><br /><br />
+                    
                     <input class="button night-button" type="submit" value="post" />
 
-                    <br /><br />
-
-                    <p class="credit">fireflies by <a href="http://duskjacket.com/">mark beasley</a hef></p>
                 </form>
             </div>
+
+            <p class="credit">fireflies by <a href="http://duskjacket.com/">mark beasley</a></p>
 
             <div class="bugs">
                 <div class="firefly"></div>

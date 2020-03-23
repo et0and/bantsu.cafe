@@ -51,28 +51,58 @@ document.addEventListener("DOMContentLoaded", function(){
 
         data.map((item) => {
             var div = document.createElement("div");
-            div.classList.add('emoji');
-            div.style.left = randomNumber(0, 100) + 'vw';
-            div.style.top = randomNumber(0, 200) + 'vh';
-            div.innerHTML = `${item.emoji} `;
-            div.id = item._id;
+            div.classList.add('note');
+            div.style.left = randomNumber(0, 70) + 'vw';
+            div.style.top = randomNumber(0, 70) + 'vh';
+            div.innerHTML = `
+                ${item.emoji}<br /><br />
+                <p><a class="delete-note" id="${item._id}">delete note</a></p>
+            `;
 
             notesEl.appendChild(div);
         });
 
-        const emojiElements = document.querySelectorAll('.emoji');
+        const noteElements = document.querySelectorAll('.delete-note');
 
+        for (let note of noteElements) {
+            note.addEventListener('click', function() {
+                fetch('/delete-note?id=' + note.id, {
+                    method: 'delete',
+                    body: JSON.stringify()
+                }).then(() => {
+                    location.reload(); 
+                })
+            });
+        }
 
-            for (let emoji of emojiElements) {
-                emoji.addEventListener('click', function() {
-                    fetch('/delete-emoji?id=' + emoji.id, {
-                        method: 'delete',
-                        body: JSON.stringify()
-                    }).then(() => {
-                        location.reload(); 
-                    })
-                });
+        // toggle notes
+
+        const notesToggle = document.querySelector('.notes-toggle');
+        notesToggle.innerHTML = 'Show notes';
+        notesToggle.id = 'show';
+        const notesElements = document.querySelectorAll('.note');
+
+        function toggleNotes() {
+            if (notesToggle.id == 'show') {
+                console.log('hide');
+                notesToggle.id = 'hide';
+                notesToggle.innerHTML = 'Show notes';
+                for (let note of notesElements) {
+                    note.style.display = 'none';
+                }
+            } else {
+                console.log('show');
+                notesToggle.id = 'show';
+                notesToggle.innerHTML = 'Hide notes';
+                console.log(notesElements);
+                for (let note of notesElements) {
+                    note.style.display = 'block';
+                }
             }
+        }
+
+        notesToggle.addEventListener('click', toggleNotes);
+        toggleNotes();
     
     }
 
@@ -149,14 +179,19 @@ function checkLights() {
     .then(response => response.json())
     .then(data => {
         console.log(data[0].on);
-        var link = document.querySelector('#lights-off');
+        var lightsOff = document.querySelector('#lights-off');
+        var lightsOn = document.querySelector('#lights-on');
         if (data[0].on == 'false') {
-            link.href = "/css/lights-off.css";
+            lightsOff.href = '/css/lights-off.css';
+            lightsOn.href = '';
+            document.querySelector('.notes-toggle').style.display = 'block';
 
             console.log('lights off');
         } else {
-            link.href = "";
+            lightsOff.href = '';
+            lightsOn.href = "/css/lights-on.css";
             console.log('lights on');
+            document.querySelector('.notes-toggle').style.display = 'none';
         }
     })
     .catch(error => console.error(error))
@@ -181,3 +216,5 @@ window.setInterval(function(){
     checkLights();
     console.log('checking lights');
 }, 4000);
+
+

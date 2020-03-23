@@ -45,6 +45,7 @@
 body {
     height: 100vh;
     cursor: grab;
+    overflow: hidden;
 }
 
 .firefly {
@@ -97,6 +98,6 @@ animation-duration: 26s, 3s;
 animation-delay: 5s, 18s;
 }
 
-.emoji {
+.note {
     display: none;
 }

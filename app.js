@@ -94,7 +94,7 @@ app.post('/post-status', apiLimiter, [
 });
 
 app.post('/post-note', apiLimiter, [
-    check('emoji').not().isEmpty().isLength({ max: 100 }).escape()
+    check('emoji').not().isEmpty().isLength({ max: 500 }).escape()
   ], (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -104,7 +104,7 @@ app.post('/post-note', apiLimiter, [
         res.redirect('/#success');
 });
 
-app.delete('/delete-emoji', apiLimiter, (req, res) => {
+app.delete('/delete-note', apiLimiter, (req, res) => {
     console.log(req.query.id);
 
     db.getDB().collection('notes').deleteOne({_id: ObjectID(req.query.id)});
