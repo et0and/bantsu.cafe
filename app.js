@@ -94,7 +94,7 @@ app.post('/post-status', apiLimiter, [
 });
 
 app.post('/post-note', apiLimiter, [
-    check('emoji').not().isEmpty().isLength({ max: 5 }).escape()
+    check('emoji').not().isEmpty().isLength({ max: 100 }).escape()
   ], (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
