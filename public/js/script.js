@@ -186,7 +186,7 @@ function checkLights() {
             lightsOff.href = '';
             lightsOn.href = "/css/lights-on.css";
             console.log('lights on');
-            document.querySelector('.notes-toggle').style.display = 'none';
+            // document.querySelector('.notes-toggle').style.display = 'none';
         }
     })
     .catch(error => console.error(error))
