@@ -20,9 +20,11 @@ h1, h2, h3, h4, a, ul, ol, li, p {
 h1, h2, h3, h4, ul, ol, p {
     margin-bottom: 1.3em;
 }
+ul {
+    list-style-type: none;
+}
 ul, ol {
     list-style-position: inside;
-    /* list-style-type: none; */
 }
 header {
     display: grid;
@@ -31,6 +33,9 @@ header {
 /* section {
     margin-bottom: 2em;
 } */
+ul.about li {
+    margin-bottom: 0.3em;
+}
 summary {
     border-bottom: 1px dashed #00000026;
     padding-bottom: 2px;
@@ -133,9 +138,11 @@ input, select { font-size: 100%; }
     overflow: hidden;
     overflow-y: scroll;
     line-height: 20px;
+    cursor: grab;
 }
 .note:hover {
     z-index: 9999;
+    cursor: grab;
 }
 .note a.delete-note {
     color: #0b072e;
