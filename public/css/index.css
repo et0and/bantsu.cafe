@@ -167,6 +167,7 @@ input, select { font-size: 100%; }
     left: 0;
     right: 0;
     bottom: 0;
+    color: #fff6ed;
     background: #0b072e;
     text-align: center;
     display: flex;
