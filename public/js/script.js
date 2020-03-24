@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function(){
         // toggle notes
 
         const notesToggle = document.querySelector('.notes-toggle');
-        notesToggle.innerHTML = 'Show notes';
+        notesToggle.innerHTML = 'show notes';
         notesToggle.id = 'show';
         const notesElements = document.querySelectorAll('.note');
 
@@ -86,14 +86,14 @@ document.addEventListener("DOMContentLoaded", function(){
             if (notesToggle.id == 'show') {
                 console.log('hide');
                 notesToggle.id = 'hide';
-                notesToggle.innerHTML = 'Show notes';
+                notesToggle.innerHTML = 'show notes';
                 for (let note of notesElements) {
                     note.style.display = 'none';
                 }
             } else {
                 console.log('show');
                 notesToggle.id = 'show';
-                notesToggle.innerHTML = 'Hide notes';
+                notesToggle.innerHTML = 'hide notes';
                 console.log(notesElements);
                 for (let note of notesElements) {
                     note.style.display = 'block';
