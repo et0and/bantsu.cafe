@@ -140,12 +140,6 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById("post-note-success").style.display = "none";
     }
 
-    // Secret 🔑
-    // if(window.location.hash == '#closed'){
-    // } else {
-    //     openCafe();
-    // }
-
     openCafe();
 
     // Cafe Hours
@@ -160,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function(){
             link.type = "text/css";
             link.rel = "stylesheet";
             link.media = "screen";
+            link.id = "fireflies";
 
             document.getElementsByTagName("head")[0].appendChild(link);
         } else {
@@ -207,9 +202,11 @@ document.querySelector('.light-switch').addEventListener('click', async function
     })
 });
 
+// secret door 🔑
 document.querySelector('.secret-door').addEventListener('click', function() {
     // open cafe
     document.querySelector('#closed').style.display = "none";
+    document.querySelector('#fireflies').remove();
 });
 
 window.setInterval(function(){
