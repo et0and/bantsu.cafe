@@ -127,6 +127,7 @@ input, select { font-size: 100%; }
 .credit {
     position: absolute;
     bottom: 0px;
+    font-size: 11px;
     right: 15px;
 }
 .credit, .credit a {color: #fff;}
@@ -143,7 +144,6 @@ section p, li {
 .from-elliott, .from-elliott a {
     color: #00000063;
     font-size: 11px !important;
-    font-style: italic;
 }
 .from-elliott a {
     text-decoration: underline;
