@@ -27,7 +27,6 @@ summary {
     width: 200px;
     height: 200px;
     background-color: #fff6ed;
-    opacity: .8;
     padding: 10px;
     color: #0b072e;
     font-size: 16px;
@@ -39,8 +38,6 @@ summary {
 }
 .note:hover {
     z-index: 9999;
-    background-color: #fff6ed;
-    opacity: 1;
 }
 .note a.delete-note {
     color: #0b072e;
