@@ -214,10 +214,10 @@ document.querySelector('.secret-door').addEventListener('click', function() {
     document.querySelector('#fireflies').remove();
 });
 
-window.setInterval(function(){
-    checkLights();
-    console.log('checking lights');
-}, 4000);
+// window.setInterval(function(){
+//     checkLights();
+//     console.log('checking lights');
+// }, 4000);
 
 
 // draggable notes
