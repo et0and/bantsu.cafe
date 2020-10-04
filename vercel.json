@@ -1,0 +1,7 @@
+{
+  "name": "my-mongodb-api",
+  "version": 2,
+  "env": {
+    "MONGODB_URI": "@mongodb+srv://tomh:Kikonai22@cluster0.8cyzc.mongodb.net/bantsu?retryWrites=true&w=majority"
+  }
+}
