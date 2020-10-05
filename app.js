@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public', {
     extensions: ['html', 'htm'],
 }));
 
-app.get('/links',(req,res)=>{
+app.get('/links.html',(req,res)=>{
     db.getDB().collection('links').find({}).toArray((err,documents)=>{
         if(err)
             console.log(err)
@@ -33,7 +33,7 @@ app.get('/links',(req,res)=>{
     });
 });
 
-app.get('/statuses',(req,res)=>{
+app.get('/statuses.html',(req,res)=>{
     db.getDB().collection('statuses').find({}).toArray((err,documents)=>{
         if(err)
             console.log(err)
@@ -44,7 +44,7 @@ app.get('/statuses',(req,res)=>{
     });
 });
 
-app.get('/notes',(req,res)=>{
+app.get('/notes.html',(req,res)=>{
     db.getDB().collection('notes').find({}).toArray((err,documents)=>{
         if(err)
             console.log(err)
@@ -55,7 +55,7 @@ app.get('/notes',(req,res)=>{
     });
 });
 
-app.get('/light-status',(req,res)=>{
+app.get('/light-status.html',(req,res)=>{
     db.getDB().collection('lights').find({}).toArray((err,documents)=>{
         if(err)
             console.log(err)
@@ -66,7 +66,7 @@ app.get('/light-status',(req,res)=>{
     });
 });
 
-app.post('/post', apiLimiter, [
+app.post('/post.html', apiLimiter, [
     check('type').not().isEmpty().isLength({ max: 1000 }).escape(),
     check('title').not().isEmpty().isLength({ max: 1000 }).escape(),
     check('link').isURL().not().isEmpty().isLength({ max: 1000 }).escape()
@@ -81,7 +81,7 @@ app.post('/post', apiLimiter, [
         res.redirect('/');
 });
 
-app.post('/post-status', apiLimiter, [
+app.post('/post-status.html', apiLimiter, [
     check('name').not().isEmpty().isLength({ max: 100 }).escape(),
     check('status').not().isEmpty().isLength({ max: 5000 }).escape()
   ], (req, res) => {
@@ -93,7 +93,7 @@ app.post('/post-status', apiLimiter, [
         res.redirect('/');
 });
 
-app.post('/post-note', apiLimiter, [
+app.post('/post-note.html', apiLimiter, [
     check('emoji').not().isEmpty().isLength({ max: 500 }).escape()
   ], (req, res) => {
     const errors = validationResult(req)
@@ -104,14 +104,14 @@ app.post('/post-note', apiLimiter, [
         res.redirect('/#success');
 });
 
-app.delete('/delete-note', apiLimiter, (req, res) => {
+app.delete('/delete-note.html', apiLimiter, (req, res) => {
     console.log(req.query.id);
 
     db.getDB().collection('notes').deleteOne({_id: ObjectID(req.query.id)});
     res.redirect('/#deleted');
 });
 
-app.post('/light-switch', (req, res) => {
+app.post('/light-switch.html', (req, res) => {
 
     db.getDB().collection('lights').find({}).toArray((err,documents)=>{
         if(err)
