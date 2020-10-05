@@ -1,5 +1,5 @@
 // check lights
-fetch('/light-status.html')
+fetch('/light-status')
 .then(response => response.json())
 .then(data => {
     console.log(data[0].on);
